@@ -1,0 +1,30 @@
+{
+    "name": "umimood/multi-sitetree",
+    "description": "Provides Multi SiteTree sections in SilverStripe CMS",
+    "type": "silverstripe-vendormodule",
+    "authors": [
+        {
+            "name": "Umair M",
+            "email": "umair.mahmood22@gmail.com"
+        }
+    ],
+    "require": {
+        "silverstripe/cms": "^4.3",
+        "silverstripe/versioned-admin": "^1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "UmiMood\\MultiSiteTree\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "UmiMood\\MultiSiteTree\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
