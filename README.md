@@ -1,5 +1,6 @@
 Multi Site Tree 
 ---
+[![Build Status](https://travis-ci.com/UmiMood/silverstripe-multi-sitetree.svg?token=4CfuxCuzvs5i12ZugsAZ&branch=4)](https://travis-ci.com/UmiMood/silverstripe-multi-sitetree)
 
 Module provides ability to create multiple site tree sections to divide content pages based on class type.
 
