@@ -1,0 +1,20 @@
+language: php
+
+dist: trusty
+
+env:
+  global:
+    - COMPOSER_ROOT_VERSION=3.x-dev
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.1.2
+      env: DB=MYSQL PHPUNIT_TEST=1
+
+before_script:
+  - composer self-update || true
+  - phpenv rehash
+  - composer validate
+  - composer install --prefer-dist
+  - composer require --prefer-dist --no-update silverstripe/recipe-core:4.x-dev silverstripe/versioned:1.x-dev silverstripe/assets:1.x-dev --prefer-dist
