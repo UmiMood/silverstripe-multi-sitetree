@@ -1,0 +1,41 @@
+image: php:7.1.2
+
+cache:
+  paths:
+    - vendor/
+
+before_script:
+  - apt-get update -yqq
+  - apt-get install -yqq git libmcrypt-dev libpq-dev libcurl4-gnutls-dev libicu-dev libvpx-dev libjpeg-dev libpng-dev libxpm-dev zlib1g-dev libfreetype6-dev libxml2-dev libexpat1-dev libbz2-dev libgmp3-dev libldap2-dev unixodbc-dev libsqlite3-dev libaspell-dev libsnmp-dev libpcre3-dev libtidy-dev
+  - docker-php-ext-install mbstring mcrypt pdo_pgsql curl json intl gd xml zip bz2 opcache
+  - pecl install xdebug
+  - docker-php-ext-enable xdebug
+  - curl -sS https://getcomposer.org/installer | php
+  - composer self-update || true
+  - phpenv rehash
+  - composer validate
+  - composer install --prefer-dist
+  - composer require --prefer-dist --no-update silverstripe/recipe-core:4.x-dev silverstripe/versioned:1.x-dev silverstripe/assets:1.x-dev --prefer-dist
+
+services:
+  - mysql:5.7
+
+variables:
+  MYSQL_DATABASE: test_db
+  MYSQL_ROOT_PASSWORD: test_db
+  COMPOSER_ROOT_VERSION: 3.x-dev
+
+connect:
+  image: mysql
+  script:
+    - echo "SELECT 'OK';" | mysql --user=root --password="$MYSQL_ROOT_PASSWORD" --host=mysql "$MYSQL_DATABASE"
+
+#matrix:
+#  fast_finish: true
+#  include:
+#    - php: 7.1.2
+#      env: DB=MYSQL PHPUNIT_TEST=1
+
+test:
+  script:
+    - vendor/bin/phpunit --configuration phpunit.xml --coverage-text --colors=never
