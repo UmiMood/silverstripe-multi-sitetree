@@ -12,7 +12,6 @@ before_script:
   - docker-php-ext-enable xdebug
   - curl -sS https://getcomposer.org/installer | php
   - composer self-update || true
-  - phpenv rehash
   - composer validate
   - composer install --prefer-dist
   - composer require --prefer-dist --no-update silverstripe/recipe-core:4.x-dev silverstripe/versioned:1.x-dev silverstripe/assets:1.x-dev --prefer-dist
@@ -25,10 +24,10 @@ variables:
   MYSQL_ROOT_PASSWORD: test_db
   COMPOSER_ROOT_VERSION: 3.x-dev
 
-connect:
-  image: mysql
-  script:
-    - echo "SELECT 'OK';" | mysql --user=root --password="$MYSQL_ROOT_PASSWORD" --host=mysql "$MYSQL_DATABASE"
+#connect:
+#  image: mysql
+#  script:
+#    - echo "SELECT 'OK';" | mysql --user=root --password="$MYSQL_ROOT_PASSWORD" --host=mysql "$MYSQL_DATABASE"
 
 #matrix:
 #  fast_finish: true
