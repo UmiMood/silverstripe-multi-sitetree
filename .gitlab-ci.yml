@@ -21,8 +21,11 @@ services:
 
 variables:
   MYSQL_DATABASE: test_db
-  MYSQL_ROOT_PASSWORD: test_db
+  MYSQL_ROOT_PASSWORD: mysql
   COMPOSER_ROOT_VERSION: 3.x-dev
+  SS_DATABASE_USERNAME: root
+  SS_DATABASE_PASSWORD: mysql
+
 
 #connect:
 #  image: mysql
