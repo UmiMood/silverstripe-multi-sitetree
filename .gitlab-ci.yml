@@ -36,6 +36,6 @@ variables:
 #      env: DB=MYSQL PHPUNIT_TEST=1
 
 test:php7:
-  image: php:7
+  image: php:7.1.2
   script:
     - vendor/bin/phpunit --configuration phpunit.xml.dist --coverage-text --colors=never
