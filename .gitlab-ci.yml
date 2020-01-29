@@ -1,5 +1,3 @@
-image: php:7.1.2
-
 cache:
   paths:
     - vendor/
@@ -43,6 +41,11 @@ variables:
 
 test:php7:
   image: php:7.1.2
+  script:
+    - vendor/bin/phpunit --configuration phpunit.xml.dist --coverage-text --colors=never
+
+test:php7_2:
+  image: php:7.2
   script:
     - vendor/bin/phpunit --configuration phpunit.xml.dist --coverage-text --colors=never
   allow_failure: true
