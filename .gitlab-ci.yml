@@ -25,6 +25,9 @@ variables:
   COMPOSER_ROOT_VERSION: 3.x-dev
   SS_DATABASE_USERNAME: root
   SS_DATABASE_PASSWORD: mysql
+  SS_DATABASE_CLASS: MySQLPDODatabase
+  SS_DATABASE_SERVER: mysql
+  SS_DATABASE_NAME: test_db
 
 
 #connect:
