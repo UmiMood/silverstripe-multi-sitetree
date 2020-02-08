@@ -46,7 +46,7 @@ class MultiSiteTreeCMSMainExtension extends Extension
     {
         if (!$this->owner->currentPage()) {
             $unlinked = false;
-            $last = $items->pop();
+            $items->pop();
             $items->push(new ArrayData(array(
                 'Title' => $this->getOwner()->config()->get('menu_title'),
                 'Link' => ($unlinked) ? false : $this->getOwner()->Link()

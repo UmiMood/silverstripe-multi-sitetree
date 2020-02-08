@@ -56,4 +56,34 @@ class ControllerTest extends SapphireTest
         $this->assertEquals(1, sizeof($classes));
         $this->assertEquals(TestPage::class, array_pop($classes));
     }
+
+    public function testFamilyControllerMenuTitle()
+    {
+        $controller = CMSProductsController::singleton();
+        $menuTitle = $controller->getFamilyControllerMenuTitle();
+        $this->assertEquals('Products', $menuTitle);
+    }
+
+    public function testFamilyURLSegment()
+    {
+        $controller = CMSProductsController::singleton();
+        $menuTitle = $controller->getFamilyURLSegment();
+        $this->assertEquals('products', $menuTitle);
+    }
+
+    public function testFamilyController()
+    {
+        foreach (
+            [
+                CMSProductsController::class,
+                CMSProductAddController::class,
+                CMSProductEditController::class,
+                CMSProductHistoryViewerController::class,
+                CMSProductSettingsController::class
+            ] as $class
+        ) {
+            $controller = $class::singleton()->getFamilyController();
+            $this->assertInstanceOf(CMSProductsController::class, $controller);
+        }
+    }
 }
