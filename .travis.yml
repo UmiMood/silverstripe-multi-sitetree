@@ -1,5 +1,5 @@
 language: php
-
+dist: trusty
 env:
   global:
     - TRAVIS_NODE_VERSION="10"
@@ -19,7 +19,6 @@ before_script:
   - phpenv config-rm xdebug.ini
 
   - composer validate
-  - composer install --prefer-dist
   - composer require --prefer-dist --no-update silverstripe/recipe-core:"$RECIPE_VERSION" silverstripe/versioned:1.x-dev silverstripe/assets:1.x-dev --prefer-dist
   - if [[ $DB == PGSQL ]]; then composer require --no-update silverstripe/postgresql:2.1.x-dev; fi
   - composer install --prefer-source --no-interaction --no-progress --no-suggest --optimize-autoloader --verbose --profile
