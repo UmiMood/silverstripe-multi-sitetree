@@ -4,3 +4,4 @@
 /tests/assets/
 /app/
 /assets/
+phpunit.xml

@@ -83,7 +83,7 @@ class ControllerTest extends SapphireTest
             ] as $class
         ) {
             $controller = $class::singleton()->getFamilyController();
-            $this->assertInstanceOf(CMSProductsController::class, $controller);
+            $this->assertEquals(CMSProductsController::class, $controller);
         }
     }
 }
