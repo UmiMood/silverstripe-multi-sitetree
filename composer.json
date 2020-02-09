@@ -1,5 +1,5 @@
 {
-    "name": "umimood/multi-sitetree",
+    "name": "umimood/silverstripe-multi-sitetree",
     "description": "Provides Multi SiteTree sections in SilverStripe CMS",
     "type": "silverstripe-vendormodule",
     "keywords": [
