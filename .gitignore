@@ -1,0 +1,7 @@
+/vendor/
+/resources
+/composer.lock
+/tests/assets/
+/app/
+/assets/
+phpunit.xml

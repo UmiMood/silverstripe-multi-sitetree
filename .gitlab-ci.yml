@@ -1,0 +1,51 @@
+cache:
+  paths:
+    - vendor/
+
+before_script:
+  - apt-get update -yqq
+  - apt-get install -yqq git libmcrypt-dev libpq-dev libcurl4-gnutls-dev libicu-dev libvpx-dev libjpeg-dev libpng-dev libxpm-dev zlib1g-dev libfreetype6-dev libxml2-dev libexpat1-dev libbz2-dev libgmp3-dev libldap2-dev unixodbc-dev libsqlite3-dev libaspell-dev libsnmp-dev libpcre3-dev libtidy-dev
+  - docker-php-ext-install pdo_pgsql curl json intl gd xml zip bz2 opcache pdo_mysql mysqli
+  - pecl install xdebug
+  - docker-php-ext-enable xdebug mysqli
+  - curl -sS https://getcomposer.org/installer | php
+  - php composer.phar self-update || true
+  - php composer.phar validate
+  - php composer.phar install --prefer-dist
+  - php composer.phar require --prefer-dist --no-update silverstripe/recipe-core:4.x-dev silverstripe/versioned:1.x-dev silverstripe/assets:1.x-dev --prefer-dist
+
+services:
+  - mysql:5.7
+
+variables:
+  MYSQL_DATABASE: test_db
+  MYSQL_ROOT_PASSWORD: mysql
+  COMPOSER_ROOT_VERSION: 3.x-dev
+  SS_DATABASE_USERNAME: root
+  SS_DATABASE_PASSWORD: mysql
+  SS_DATABASE_CLASS: MySQLPDODatabase
+  SS_DATABASE_SERVER: mysql
+  SS_DATABASE_NAME: test_db
+
+
+#connect:
+#  image: mysql
+#  script:
+#    - echo "SELECT 'OK';" | mysql --user=root --password="$MYSQL_ROOT_PASSWORD" --host=mysql "$MYSQL_DATABASE"
+
+#matrix:
+#  fast_finish: true
+#  include:
+#    - php: 7.1.2
+#      env: DB=MYSQL PHPUNIT_TEST=1
+
+test:php7:
+  image: php:7.1.2
+  script:
+    - vendor/bin/phpunit --configuration phpunit.xml.dist --coverage-text --colors=never
+
+test:php7_2:
+  image: php:7.2
+  script:
+    - vendor/bin/phpunit --configuration phpunit.xml.dist --coverage-text --colors=never
+  allow_failure: true

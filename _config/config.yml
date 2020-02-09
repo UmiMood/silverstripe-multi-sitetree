@@ -1,0 +1,84 @@
+---
+Name: multisitetree
+After:
+  - modules-cms
+  - modules-other
+
+---
+SilverStripe\Core\Manifest\ModuleManifest:
+  module_priority:
+    - umimood/silverstripe-multi-sitetree
+
+SilverStripe\CMS\Controllers\CMSMain:
+  extensions:
+    - UmiMood\MultiSiteTree\Extensions\MultiSiteTreeCMSMainExtension
+
+SilverStripe\CMS\Model\SiteTree:
+  extensions:
+    - UmiMood\MultiSiteTree\Extensions\SiteTreeExtension
+
+UmiMood\MultiSiteTree\Controllers\CMSPagesController:
+  url_segment: content
+  menu_priority: 40
+  menu_title: Content
+  family_controller: UmiMood\MultiSiteTree\Controllers\CMSPagesController
+  classes:
+    - Page
+
+UmiMood\MultiSiteTree\Controllers\CMSPageAddController:
+  url_segment: content/add
+  menu_priority: 40
+  menu_title: Content
+
+UmiMood\MultiSiteTree\Controllers\CMSPageEditController:
+  url_segment: content/edit
+  menu_priority: 40
+  menu_title: Content
+
+UmiMood\MultiSiteTree\Controllers\CMSPageHistoryViewerController:
+  url_segment: content/history
+  menu_priority: 40
+  menu_title: Content
+
+UmiMood\MultiSiteTree\Controllers\CMSPageSettingsController:
+  url_segment: content/settings
+  menu_priority: 40
+  menu_title: Content
+
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\CMS\Controllers\CMSPagesController:
+    class: UmiMood\MultiSiteTree\Controllers\CMSPagesController
+
+  SilverStripe\CMS\Controllers\CMSPageEditController:
+    class: UmiMood\MultiSiteTree\Controllers\CMSPageEditController
+
+  SilverStripe\CMS\Controllers\CMSPageAddController:
+    class: UmiMood\MultiSiteTree\Controllers\CMSPageAddController
+
+  SilverStripe\CMS\Controllers\CMSPageSettingsController:
+    class: UmiMood\MultiSiteTree\Controllers\CMSPageSettingsController
+
+  SilverStripe\VersionedAdmin\Controllers\CMSPageHistoryViewerController:
+    class: UmiMood\MultiSiteTree\Controllers\CMSPageHistoryViewerController
+
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_ChangedPages:
+    class: UmiMood\MultiSiteTree\Controllers\MultiSiteTreeFilter_ChangedPages
+
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_DeletedPages:
+    class: UmiMood\MultiSiteTree\Controllers\MultiSiteTreeFilter_DeletedPages
+
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_PublishedPages:
+    class: UmiMood\MultiSiteTree\Controllers\MultiSiteTreeFilter_PublishedPages
+
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDeletedPages:
+    class: UmiMood\MultiSiteTree\Controllers\MultiSiteTreeFilter_StatusDeletedPages
+
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusDraftPages:
+    class: UmiMood\MultiSiteTree\Controllers\MultiSiteTreeFilter_StatusDraftPages
+
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    class: UmiMood\MultiSiteTree\Controllers\MultiSiteTreeFilter_StatusRemovedFromDraftPages
+
+  SilverStripe\CMS\Controllers\CMSSiteTreeFilter_Search:
+    class: UmiMood\MultiSiteTree\Controllers\MultiSiteTreeFilter_Search
+
