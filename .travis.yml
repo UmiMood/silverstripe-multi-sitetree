@@ -19,8 +19,6 @@ before_script:
   - composer validate
   - composer install --prefer-dist
   - composer require --no-update silverstripe/recipe-cms:"$RECIPE_VERSION"
-  #- composer require --prefer-dist --no-update silverstripe/recipe-core:4.x-dev silverstripe/versioned:1.x-dev silverstripe/assets:1.x-dev --prefer-dist
-  #- composer require --prefer-dist --no-update silverstripe/recipe-core:"$RECIPE_VERSION" silverstripe/versioned:1.x-dev silverstripe/assets:1.x-dev --prefer-dist
   - if [[ $DB == PGSQL ]]; then composer require --no-update silverstripe/postgresql:2.1.x-dev; fi
 
   # Install NPM dependencies
