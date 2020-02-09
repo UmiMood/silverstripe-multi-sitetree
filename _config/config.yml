@@ -24,6 +24,7 @@ UmiMood\MultiSiteTree\Controllers\CMSPagesController:
   family_controller: UmiMood\MultiSiteTree\Controllers\CMSPagesController
   classes:
     - Page
+    - SilverStripe\ErrorPage\ErrorPage
 
 UmiMood\MultiSiteTree\Controllers\CMSPageAddController:
   url_segment: content/add
