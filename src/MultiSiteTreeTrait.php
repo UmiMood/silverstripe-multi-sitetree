@@ -134,8 +134,6 @@ trait MultiSiteTreeTrait
 
     /**
      * Method override @see CMSMain::LinkListViewChildren()
-     * @return mixed
-     * @throws \ReflectionException
      */
     public function LinkListViewChildren($parentID)
     {
@@ -211,8 +209,6 @@ trait MultiSiteTreeTrait
 
     /**
      * Method override @see CMSMain::LinkPageAdd()
-     * @return null
-     * @throws \ReflectionException
      */
     public function LinkPageAdd($extra = null, $placeholders = null)
     {

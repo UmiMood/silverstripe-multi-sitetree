@@ -6,7 +6,6 @@ use SilverStripe\Control\Controller;
 use SilverStripe\Core\Extension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Core\Convert;
-use UmiMood\MultiSiteTree\MultiSiteTreeEnabled;
 use SilverStripe\Forms\TreeDropdownField;
 
 /**
@@ -22,12 +21,6 @@ class SiteTreeExtension extends Extension
     public function getCustomTreeTitle()
     {
         $children = $this->owner->creatableChildren();
-        // filter children
-        $controller = Controller::curr();
-        if ($controller instanceof MultiSiteTreeEnabled) {
-            $filteredClasses = $controller->getFilteredClasses();
-        }
-
         $flags = $this->owner->getStatusFlags();
         $treeTitle = sprintf(
             "<span class=\"jstree-pageicon page-icon class-%s\"></span><span class=\"item\" data-allowedchildren=\"%s\">%s</span>",

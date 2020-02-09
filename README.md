@@ -94,7 +94,7 @@ App\CMSEmailSettingsController:
 Note: Sub class of `UmiMood\MultiSiteTree\Controllers\CMSPagesController` is parent controller (identifier) and needs to be assigned to all five (5) controller classes. 
 
 ## Maintainer
-Umair Mahmood <umair.mahmood22@gmail.com.au>
+Umair Mahmood <umair.mahmood22@gmail.com>
 
 ## Bugtracker
 Bugs are tracked in the issues section of this repository. Before submitting an issue please read over 
