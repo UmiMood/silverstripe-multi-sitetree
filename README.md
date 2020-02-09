@@ -9,7 +9,7 @@ Module provides ability to create multiple site tree sections to divide content 
 2. php ^7
 
 ## Installation
-`composer require umimood/multi-sitetree`
+`composer require umimood/silverstripe-multi-sitetree`
 
 ## TODO
 
